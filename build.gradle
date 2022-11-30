@@ -34,6 +34,7 @@ dependencies {
     runtimeOnly "io.grpc:grpc-netty-shaded:${grpcVersion}"
 
     testImplementation "io.grpc:grpc-testing:${grpcVersion}"
+    implementation 'io.github.lognet:grpc-spring-boot-starter:4.6.0'
 
 }
 
