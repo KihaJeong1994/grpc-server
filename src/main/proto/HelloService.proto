@@ -1,0 +1,18 @@
+syntax = "proto3"; //tells the compliler what syntax is used in this file
+option java_multiple_files = true; // default: false(a single java file)
+package com.server.grpc.grpcserver;
+
+message HelloRequest{ // defines payload. 
+    string firstName = 1; // type attribute = tag(unique number) . tag: used by the protocol buffer to represent the attribute instead of using the attribute name
+    string lastName = 2;
+}
+
+message HelloResponse{
+    string greeting = 1;
+}
+
+service HelloService{
+    rpc hello(HelloRequest) returns (HelloResponse);
+}
+
+
