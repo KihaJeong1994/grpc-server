@@ -28,4 +28,29 @@ public class HelloServiceImpl extends HelloServiceImplBase{
         // which is a response observer, a call back for the server to call with its response.
         // => client gets an option to make a blocking call or a non-blocking call(? why)
     }
+
+    @Override
+    public void helloTwice(HelloRequest request, StreamObserver<HelloResponse> responseObserver){
+        String greeting1 = new StringBuilder()
+                                .append("Hello1, ")
+                                .append(request.getFirstName())
+                                .append(" ")
+                                .append(request.getLastName())
+                                .toString();
+        HelloResponse response1 = HelloResponse.newBuilder()
+                                .setGreeting(greeting1)
+                                .build();
+        String greeting2 = new StringBuilder()
+                                .append("Hello2, ")
+                                .append(request.getFirstName())
+                                .append(" ")
+                                .append(request.getLastName())
+                                .toString();
+        HelloResponse response2 = HelloResponse.newBuilder()
+                                .setGreeting(greeting2)
+                                .build();
+        responseObserver.onNext(response1);
+        responseObserver.onNext(response2);
+        responseObserver.onCompleted();                   
+    }
 }

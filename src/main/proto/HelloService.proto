@@ -13,6 +13,7 @@ message HelloResponse{
 
 service HelloService{
     rpc hello(HelloRequest) returns (HelloResponse);
+    rpc helloTwice(HelloRequest) returns (stream HelloResponse);
 }
 
 
